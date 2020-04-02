@@ -1,10 +1,23 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import {Row, Col} from "reactstrap";
 import CountrySelector from "../components/CountrySelector";
 import DataSelected from "../components/DataSelected";
 import MapCountries from "../components/MapCountries";
+import GetCountry from "../hooks/GetCountry";
+import url from "../config";
 
 const Home = () => {
+    const {data} = GetCountry(`${url}countries`);
+    const [value, setValue] = useState("PE");
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+
+    useEffect(() => {
+
+    });
+
     return (
         <Fragment>
             <Row>
@@ -17,25 +30,24 @@ const Home = () => {
                     <p>Seleccione el pais</p>
                 </Col>
                 <Col lg={4} md={6} sm={6}>
-                    <CountrySelector/>
+                    <CountrySelector
+                        data={data}
+                        onChange={handleChange}
+                        value={value}
+                    />
                 </Col>
             </Row>
             <Row className="d-flex justify-content-center">
                 <Col lg={7} className="border">
-                    <MapCountries/>
+                    <MapCountries
+                        data={data}
+                        value={value}
+                    />
                 </Col>
                 <Col lg={3} className="border">
                     <DataSelected
-                        titulo="Confimados"
-                        dato="5000"
-                    />
-                    <DataSelected
-                        titulo="Recuperados"
-                        dato="5000"
-                    />
-                    <DataSelected
-                        titulo="Muertes"
-                        dato="5000"
+                        data={data}
+                        value={value}
                     />
                 </Col>
             </Row>

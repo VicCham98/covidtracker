@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
-const CountrySelector = () => {
+const CountrySelector = ({data, onChange, value}) => {
     return (
-        <select className="custom-select" id="inputGroupSelect01">
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
+        <Fragment>
+            <select value={value} className="custom-select" onChange={onChange}>
+                {
+                    data.map((country, i) => {
+                        return(
+                            <option key={i} value={country.countryInfo.iso2}>{country.country}</option>
+                        )
+                    })
+                }
+            </select>
+        </Fragment>
     );
 };
 
