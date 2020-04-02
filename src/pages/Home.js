@@ -40,6 +40,7 @@ const Home = () => {
             <Row className="d-flex justify-content-center">
                 <Col lg={7} className="border">
                     <MapCountries
+                        setValue={setValue}
                         data={data}
                         value={value}
                     />
