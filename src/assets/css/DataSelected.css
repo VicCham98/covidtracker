@@ -1,0 +1,39 @@
+/*// Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    .img-size {
+        width: 90%;
+        height: auto;
+    }
+}
+
+/*// Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+    .img-size {
+        width: 90%;
+        height: auto;
+    }
+}
+
+/*// Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .img-size {
+        width: 90%;
+        height: auto;
+    }
+}
+
+/*// Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .img-size {
+        width: 50%;
+        height: auto;
+    }
+}
+
+/*// Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .img-size {
+        width: 50%;
+        height: auto;
+    }
+}

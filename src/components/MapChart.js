@@ -5,9 +5,20 @@ const geoUrl =
     "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 const MapChart = ({data, setTooltipContent, value, setValue}) => {
+    const wrapperStyles = {
+        width: "100%",
+        maxWidth: 980,
+        margin: "0 auto",
+    };
+
     return (
-        <div>
-            <ComposableMap data-tip="" projectionConfig={{ scale: 200 }} style={{ width: "80%", height: "auto" }}  >
+        <div style={wrapperStyles} >
+            <ComposableMap data-tip=""  width={980}
+                           height={551}
+                           style={{
+                               width: "100%",
+                               height: "auto",
+                           }} >
                 <ZoomableGroup zoom={1}>
                     <Geographies geography={geoUrl}>
                         {({ geographies }) =>

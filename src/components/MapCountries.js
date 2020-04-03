@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import ReactTooltip from 'react-tooltip';
 import MapChart from "./MapChart";
 
 const MapCountries = ({data, value, setValue}) => {
     const [content, setContent] = useState("");
     return (
-        <div>
+        <Fragment>
             <MapChart
                 setTooltipContent={setContent}
                 value={value}
@@ -13,7 +13,7 @@ const MapCountries = ({data, value, setValue}) => {
                 data={data}
             />
             <ReactTooltip>{content}</ReactTooltip>
-        </div>
+        </Fragment>
     );
 };
 
