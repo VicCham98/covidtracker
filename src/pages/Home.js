@@ -1,22 +1,20 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, {Fragment, useState} from 'react';
 import {Row, Col} from "reactstrap";
 import CountrySelector from "../components/CountrySelector";
 import DataSelected from "../components/DataSelected";
 import MapCountries from "../components/MapCountries";
 import GetCountry from "../hooks/GetCountry";
+import GetAllData from "../hooks/GetAllData";
 import url from "../config";
 
 const Home = () => {
     const {data} = GetCountry(`${url}countries`);
+    const {allData} = GetAllData(`${url}all`);
     const [value, setValue] = useState("PE");
 
     const handleChange = (event) => {
         setValue(event.target.value);
     };
-
-    useEffect(() => {
-
-    });
 
     return (
         <Fragment>
@@ -25,16 +23,22 @@ const Home = () => {
                     <h4>CASOS DE COVID-19 EN EL MUNDO</h4>
                 </Col>
             </Row>
-            <Row className="d-flex justify-content-center">
-                <Col lg={2} md={3} sm={12}  className="text-sm-center text-md-right text-lg-right">
-                    <p>Seleccione el pais</p>
-                </Col>
-                <Col lg={4} md={6} sm={6}>
-                    <CountrySelector
-                        data={data}
-                        onChange={handleChange}
-                        value={value}
-                    />
+            <Row>
+                <Col>
+                    <ul className="d-flex justify-content-center">
+                        <li className="d-inline-block text-center mr-5">
+                            <h5>{allData.cases}</h5>
+                            <p className="text-danger">Confirmados</p>
+                        </li>
+                        <li className="d-inline-block text-center mr-5">
+                            <h5>{allData.recovered}</h5>
+                            <p className="text-success">Recuperados</p>
+                        </li>
+                        <li className="d-inline-block text-center mr-5">
+                            <h5>{allData.deaths}</h5>
+                            <p>Muertes</p>
+                        </li>
+                    </ul>
                 </Col>
             </Row>
             <Row className="d-flex justify-content-center">
@@ -46,6 +50,18 @@ const Home = () => {
                     />
                 </Col>
                 <Col lg={3} className="border">
+                    <Row className="d-flex justify-content-center">
+                        <Col>
+                            <p>Seleccione el pais</p>
+                        </Col>
+                        <Col>
+                            <CountrySelector
+                                data={data}
+                                onChange={handleChange}
+                                value={value}
+                            />
+                        </Col>
+                    </Row>
                     <DataSelected
                         data={data}
                         value={value}

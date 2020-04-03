@@ -7,6 +7,7 @@ import {
 import Home from "./pages/Home";
 import Header from "./layouts/Header";
 import Layout from "./layouts/Layout";
+import Footer from "./layouts/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </Switch>
         </Router>
       </Layout>
+        <Footer/>
     </Fragment>
   );
 }
